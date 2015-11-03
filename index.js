@@ -1,5 +1,6 @@
 'use strict';
 
-import AClass from './src/aclass';
-let aClass = new AClass();
-aClass.test();
+import AureliaInterface from './src/index';
+let aureliaInterface = new AureliaInterface();
+let ai = aureliaInterface
+export {ai, aureliaInterface};
