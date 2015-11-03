@@ -13,6 +13,10 @@ class AureliaInterface {
     includePaths(...args) {
       return this.plugins.concat(args);
     }
+
+    with(...args) {
+      return this.plugins.concat(args);
+    }
 }
 
 export default AureliaInterface;
