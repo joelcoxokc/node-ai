@@ -19,8 +19,9 @@ var AureliaInterface = (function () {
   function AureliaInterface() {
     _classCallCheck(this, AureliaInterface);
 
-    this.path = cwd('jspm_packages/github/aurelia/interface@master/dist/sass');
+    this.path = cwd('jspm_packages/github/aurelia/interface@master/sass');
     this.plugins = [this.path];
+    this.configPaths = ['_variables.scss', '_settings.scss', '_function', '_mixin.scss'];
   }
 
   _createClass(AureliaInterface, [{
@@ -40,6 +41,15 @@ var AureliaInterface = (function () {
       }
 
       return this.plugins.concat(args);
+    }
+  }, {
+    key: 'configure',
+    value: function configure(pathToSass) {
+      var _this = this;
+
+      this.configPaths = this.configPaths.map(function (p) {
+        return cwd(pathToSass, _this.configPaths);
+      });
     }
   }]);
 

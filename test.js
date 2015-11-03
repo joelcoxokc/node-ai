@@ -1,7 +1,7 @@
 var ai = require('./dist/index').ai
 var assert = require('assert')
 var p = ai.path;
-var t = 'jspm_packages/github/aurelia/interface@master/dist/sass';
+var t = 'jspm_packages/github/aurelia/interface@master/sass';
 
 console.log('=====================');
 console.log('Test ai.path');
