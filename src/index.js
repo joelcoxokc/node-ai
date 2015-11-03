@@ -4,8 +4,14 @@ import path from 'path';
 let cwd = path.join.bind(path);
 
 class AureliaInterface {
-    includePaths () {
-        return 'jspm_packages/github/aurelia/interface@master/dist/sass';
+
+    constructor() {
+      this.path = cwd('jspm_packages/github/aurelia/interface@master/dist/sass');
+      this.plugins = [this.path];
+    }
+
+    includePaths(...args) {
+      return this.plugins.concat(args);
     }
 }
 
