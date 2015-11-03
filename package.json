@@ -1,12 +1,12 @@
 {
   "name": "node-ai",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A node plugin for including the aurelia interface styles into your project. ",
   "repository": {
     "type": "git",
-    "url": "https://github.com/joelcoxokc/node-ai"
+    "url": "git+https://github.com/joelcoxokc/node-ai.git"
   },
-  "main":"dist/index",
+  "main": "dist/index",
   "dependencies": {},
   "devDependencies": {
     "babel-core": "^5.3.1",
@@ -18,5 +18,21 @@
     "gulp-browserify": "^0.5.1",
     "gulp-clean": "^0.3.1",
     "gulp-sourcemaps": "^1.5.2"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/joelcoxokc/node-ai/issues"
+  },
+  "homepage": "https://github.com/joelcoxokc/node-ai#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "JoelCoxOKC",
+  "license": "ISC",
+  "keywords": [
+    "node",
+    "aureli-interface",
+    "aurelia",
+    "gulp",
+    "sass"
+  ]
 }
