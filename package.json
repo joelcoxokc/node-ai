@@ -7,7 +7,18 @@
     "url": "git+https://github.com/joelcoxokc/node-ai.git"
   },
   "main": "dist/index",
-  "dependencies": {},
+  "dependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-minify-css": "^1.2.1",
+    "gulp-plumber": "^1.0.1",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "node-bourbon": "^4.2.3",
+    "node-neat": "^1.7.2",
+    "sassdash": "^0.8.0"
+  },
   "devDependencies": {
     "babel-core": "^5.3.1",
     "babel-eslint": "^3.1.1",

@@ -13,14 +13,52 @@ var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
 
-var cwd = _path2['default'].join.bind(_path2['default']);
+var _gulp = require('gulp');
+
+var _gulp2 = _interopRequireDefault(_gulp);
+
+var _gulpSass = require('gulp-sass');
+
+var _gulpSass2 = _interopRequireDefault(_gulpSass);
+
+var _nodeNeat = require('node-neat');
+
+var _nodeNeat2 = _interopRequireDefault(_nodeNeat);
+
+var _gulpConcat = require('gulp-concat');
+
+var _gulpConcat2 = _interopRequireDefault(_gulpConcat);
+
+var _gulpPlumber = require('gulp-plumber');
+
+var _gulpPlumber2 = _interopRequireDefault(_gulpPlumber);
+
+var _gulpMinifyCss = require('gulp-minify-css');
+
+var _gulpMinifyCss2 = _interopRequireDefault(_gulpMinifyCss);
+
+var _gulpSourcemaps = require('gulp-sourcemaps');
+
+var _gulpSourcemaps2 = _interopRequireDefault(_gulpSourcemaps);
+
+var _gulpAutoprefixer = require('gulp-autoprefixer');
+
+var _gulpAutoprefixer2 = _interopRequireDefault(_gulpAutoprefixer);
+
+var cwd = _path2['default'].join.bind(_path2['default'], process.cwd());
+var sassdash = cwd('node_modules', 'sassdash', 'scss');
+
+var sassOptions = {
+  errLogToConsole: true,
+  includePaths: []
+};
 
 var AureliaInterface = (function () {
   function AureliaInterface() {
     _classCallCheck(this, AureliaInterface);
 
     this.path = cwd('jspm_packages/github/aurelia/interface@master/sass');
-    this.plugins = [this.path];
+    this.plugins = _nodeNeat2['default'].includePaths.concat(sassdash, this.path);
     this.configPaths = ['_variables.scss', '_settings.scss', '_function', '_mixin.scss'];
   }
 
@@ -43,12 +81,43 @@ var AureliaInterface = (function () {
       return this.plugins.concat(args);
     }
   }, {
-    key: 'configure',
-    value: function configure(pathToSass) {
-      var _this = this;
-
-      this.configPaths = this.configPaths.map(function (p) {
-        return cwd(pathToSass, _this.configPaths);
+    key: 'build',
+    value: function build(options) {
+      this.options = options;
+      console.log('[aurelia-interface]: Sass %s', options.dev ? 'DEV' : 'Production', options);
+      return this.logInfo(this._build(_gulp2['default'].src(options.input)).pipe(_gulp2['default'].dest(options.output)));
+    }
+  }, {
+    key: '_build',
+    value: function _build(stream) {
+      sassOptions.includePaths = this.plugins;
+      return stream && this.dev(this.minify(this.autoprefixer(this.concat(stream.pipe((0, _gulpSass2['default'])(sassOptions))))));
+    }
+  }, {
+    key: 'dev',
+    value: function dev(stream, isDevBuilt) {
+      return isDevBuilt ? stream.pipe(_gulpSourcemaps2['default'].write()).pipe(_gulpPlumber2['default'].stop()) : this.dev(stream.pipe((0, _gulpPlumber2['default'])()).pipe(_gulpSourcemaps2['default'].init({ loadMaps: true })), true);
+    }
+  }, {
+    key: 'minify',
+    value: function minify(stream) {
+      return this.options.minify ? stream.pipe((0, _gulpMinifyCss2['default'])()) : stream;
+    }
+  }, {
+    key: 'autoprefixer',
+    value: function autoprefixer(stream) {
+      return this.options.autoprefix ? stream.pipe((0, _gulpAutoprefixer2['default'])()) : stream;
+    }
+  }, {
+    key: 'concat',
+    value: function concat(stream) {
+      return this.options.concat ? stream.pipe((0, _gulpConcat2['default'])(this.options.concat)) : stream;
+    }
+  }, {
+    key: 'logInfo',
+    value: function logInfo(stream) {
+      return stream.on('error', _gulpSass2['default'].logError).on('end', function () {
+        console.log('[aurelia-interface]: Sass Complete!!');
       });
     }
   }]);
