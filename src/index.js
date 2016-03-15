@@ -21,7 +21,7 @@ let sassOptions = {
 class AureliaInterface {
 
   constructor() {
-    this.path = cwd('jspm_packages/github/aurelia/interface@master/sass');
+    this.path = cwd('jspm_packages/github/aurelia/interface@master/stylesheets');
     this.plugins = neat.includePaths.concat(sassdash, this.path);
     this.configPaths = ['_variables.scss', '_settings.scss', '_function', '_mixin.scss'];
   }
