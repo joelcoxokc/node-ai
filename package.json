@@ -1,6 +1,6 @@
 {
   "name": "node-ai",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A node plugin for including the aurelia interface styles into your project. ",
   "repository": {
     "type": "git",
