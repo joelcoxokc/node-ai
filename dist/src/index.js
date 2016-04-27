@@ -57,7 +57,7 @@ var AureliaInterface = (function () {
   function AureliaInterface() {
     _classCallCheck(this, AureliaInterface);
 
-    this.path = cwd('jspm_packages/github/aurelia/interface@master/stylesheets');
+    this.path = cwd('jspm_packages/github/aurelia/interface@dev/stylesheets');
     this.plugins = _nodeNeat2['default'].includePaths.concat(sassdash, this.path);
     this.configPaths = ['_variables.scss', '_settings.scss', '_function', '_mixin.scss'];
   }
