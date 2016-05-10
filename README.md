@@ -1,5 +1,7 @@
 # NODE-AI
 
+[![Join the chat at https://gitter.im/joelcoxokc/node-ai](https://badges.gitter.im/joelcoxokc/node-ai.svg)](https://gitter.im/joelcoxokc/node-ai?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > A node plugin for including the aurelia interface styles into your project. 
 
 [![ZenHub](https://raw.githubusercontent.com/ZenHubIO/support/master/zenhub-badge.png)](https://zenhub.io)
